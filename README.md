@@ -15,3 +15,4 @@ Compiled module wasn't loading properly - extraversion wasn't set in headers Mak
 After that Luca Soltoggio's scripts (https://github.com/toggio/PhpEpsolarTracer) started getting data from EPever controller.
 Remember to edit each file and replace any reference to USB port (/dev/ttyUSB0 for example) to Exar specific (ttyXRUSB0). 
 
+I've followed many steps of Colin HickeyColin Hickey covered in his video https://www.youtube.com/watch?v=_VcWwJIq4XU and on his git https://github.com/chickey/Epever-influxdb
