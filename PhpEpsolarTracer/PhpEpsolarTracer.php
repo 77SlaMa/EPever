@@ -299,7 +299,7 @@ class PhpEpsolarTracer
 		$this->tracer->sendRawQuery("\x01\x43\x33\x00\x00\x76\xca\xa7",false);
 		$result = $this->tracer->getResponse(false,15,174);
 		if (!$result) return 0;					   
-		$this->statData = $this->convertData($result,array(4,6,8,10,12,14,16,18,20,22,24,27),array(27,29,30));
+		$this->statData = $this->convertData($result,array(4,6,8,10,12,14,16,18,20,22,24,27),array(22,27,29,30));
 		$this->removeUnused($this->statData,array(13,14,15));
 		$this->statData = array_map(array($this,'divide'),$this->statData,$this->statDiv);
 		if (count($this->statData) != 16) return 0;
