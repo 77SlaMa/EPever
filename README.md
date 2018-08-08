@@ -16,3 +16,7 @@ After that Luca Soltoggio's scripts (https://github.com/toggio/PhpEpsolarTracer)
 Remember to edit each file and replace any reference to USB port (/dev/ttyUSB0 for example) to Exar specific (ttyXRUSB0). 
 
 I've followed many steps of Colin HickeyColin Hickey covered in his video https://www.youtube.com/watch?v=_VcWwJIq4XU and on his git https://github.com/chickey/Epever-influxdb
+
+2. It turned out, that EPever controller is reporting some parameters in non-obvious way. For example - Battery-charging-current is positive even if battery is delivering current. So in order to monitor curent and it's direction you have to monitor Stat-net-battery-current instead.
+Here I encountered another quirk - as long as current is flowing into battery, measurement is fine. As soon as battery starts discharging, value jumps to millions or more. I discovered, that routine which calculates values and sign is not working properly (anyway on my setup) - there is some problem with string/integer/hex conversion in "private function convertData". PhpEpolarTracer.php here is modified and works well at least for me.
+There was also a need to add "22" (Stat-net-battery-current) to array of values "suspected" to be negative.
