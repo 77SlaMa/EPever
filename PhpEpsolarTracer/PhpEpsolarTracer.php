@@ -212,14 +212,14 @@ class PhpEpsolarTracer
 				if (in_array($i,$negBytes)) $negByte=true; else $negByte=false;
 				// echo "0x".$data."\n";
 				if ($negByte && ("0x".$data>0x7FFF)) {
-					$data=dechex(0xFFFF-("0x".$data));
+					$data=dechex(0xFFFF-hexdec($data));
 					$neg=true;
 				} else $neg=false;
 				// echo "0x".$data."\n";
 				// If we need two bytes more, add them and increase counter
 				if (in_array($i,$doubleBytes)) {
 					$dataH=$respArray[$i*2+2].$respArray[$i*2+3];
-					if ($negByte && ("0x".$dataH>0x7FFF)) $dataH=dechex(0xFFFF-("0x".$dataH));
+					if ($negByte && ("0x".$dataH>0x7FFF)) $dataH=dechex(0xFFFF-hexdec($dataH));
 					// echo $dataH."-".$data."\n";
 					$data=$dataH.$data;
 					$i++;
